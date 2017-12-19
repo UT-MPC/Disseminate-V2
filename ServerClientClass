@@ -1,0 +1,57 @@
+import bluetooth
+import sys
+import multiprocessing
+#THIS CODE IS IN PROGRESS.NOT FUNCTIONAL AS OF NOW
+
+class Server(object):
+        def __init__(self):
+
+                self.server_sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+                self.port = 0
+        def start(self):
+                self.server_sock.bind(("",self.port))
+                self.server_sock.listen(1)
+                print "listening on port %d" % port
+
+                uuid = "1e0ca4ea-299d-4335-93eb-27fcfe7fa848"
+                bluetooth.advertise_service(self.server_sock, "FooBar Service", uuid )
+
+                self.client_sock,address = self.server_sock.accept()
+                print "Accepted connection from ",address
+
+                data = client_sock.recv(1024)
+                print "recieved [%s]" % data
+        def end(self):
+                self.client_sock.close()
+                self.server_sock.close()
+
+
+
+
+class client(object):
+        def __init__(self):
+
+                uuid = "1e0ca4ea-299d-4335-93eb-27fcfe7fa848"
+                self.service_matches = bluetooth.find_service( uuid = uuid )
+
+                if len(service_matches) == 0:
+                        print "couldn't find the FooBar service"
+                        sys.exit(0)
+
+                first_match = self.service_matches[0]
+                port = first_match["port"]
+                name = first_match["name"]
+                host = first_match["host"]
+
+                print "connecting to \"%s\" on %s" % (name, host)
+                 self.sock=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+                self.sock.connect((host, port))
+                self.sock.send("hello!!")
+                self.sock.close()
+
+if __name__ =="__main__":
+        server = Server()
+        client =client()
+        multiprocess(server,client)
+
+
