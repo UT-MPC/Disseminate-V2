@@ -14,5 +14,9 @@ after much experimentation, research and reading, the things that have been acco
   1) Utilize Python multiprocessing in order for raspberry-pi's to automatically communicate with each other on startup
   2) Add a script to root directory of Raspberry-pi to enable search and connection autonomously.
   
+ What is provided in this project:
+  1) A model for creating client and server connections.
+  2) An in-progress file for multiprocessing sending/recieving data using Bluetooth
+  
  The code for everything accomplished so far has been added to this repo, and if there are any questions or concerns, please make an issue
  request.
