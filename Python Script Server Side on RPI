@@ -1,0 +1,13 @@
+
+import bluetooth
+server_sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+port=30
+server_sock.bind(("", port))
+server_sock.listen(1)
+client_sock,address = server_sock.accept()
+print("accepted connection from ",address)
+data = client_sock.recv(1024)
+print "recieved [%s]" % data
+client_sock.close()
+server_sock.close()
+
