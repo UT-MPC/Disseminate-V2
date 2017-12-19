@@ -1,0 +1,14 @@
+https://pirobotblog.wordpress.com/2016/12/22/serial-bluetooth-communication/
+https://people.csail.mit.edu/albert/bluez-intro/x290.html
+
+Some commands:
+
+sudo systemctl start bluetooth
+
+sudo systemctl stop bluetooth
+
+systemctl status bluetooth
+
+hciconfig
+
+sudo hciconfig hci0 up
